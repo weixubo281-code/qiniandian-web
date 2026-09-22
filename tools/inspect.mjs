@@ -1,0 +1,17 @@
+import {chromium} from 'playwright';
+import fs from 'node:fs/promises';
+await fs.mkdir('qa',{recursive:true});
+const browser=await chromium.launch({executablePath:'C:/Program Files/Google/Chrome/Application/chrome.exe',headless:true,args:['--enable-webgl','--ignore-gpu-blocklist']});
+const page=await browser.newPage({viewport:{width:1440,height:900},deviceScaleFactor:1});
+page.on('pageerror',e=>console.log('PAGEERROR',e.message));page.on('console',m=>{if(m.type()==='error')console.log('CONSOLE',m.text())});
+await page.goto('http://127.0.0.1:4173/');
+await page.waitForFunction(()=>window.__qinian?.state().loaded||window.__qinian?.state().error,{},{timeout:60000});
+await page.waitForTimeout(2000);console.log('DESKTOP',JSON.stringify(await page.evaluate(()=>window.__qinian.state())));
+await page.screenshot({path:'qa/desktop-01.png'});
+await page.evaluate(()=>scrollTo({top:document.querySelector('#structure').offsetTop,behavior:'instant'}));
+await page.waitForTimeout(2500);await page.screenshot({path:'qa/desktop-03.png'});
+console.log('STRUCTURE',JSON.stringify(await page.evaluate(()=>window.__qinian.state())));
+const phone=await browser.newPage({viewport:{width:390,height:844},deviceScaleFactor:1,isMobile:true,hasTouch:true});
+await phone.goto('http://127.0.0.1:4173/');await phone.waitForFunction(()=>window.__qinian?.state().loaded||window.__qinian?.state().error,{},{timeout:60000});await phone.waitForTimeout(2000);
+console.log('MOBILE',JSON.stringify(await phone.evaluate(()=>window.__qinian.state())));await phone.screenshot({path:'qa/mobile-01.png'});
+await browser.close();

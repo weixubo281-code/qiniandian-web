@@ -1,0 +1,83 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#0b0d12" />
+  <meta name="description" content="走近北京祈年殿。在可交互的三维建筑中，探索三重檐、琉璃瓦与东方营造智慧。" />
+  <title>祈年殿 · 建筑数字档案</title>
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='32' fill='%230b0d12'/%3E%3Ccircle cx='32' cy='32' r='28' fill='none' stroke='%23c9a45c'/%3E%3Ctext x='32' y='44' text-anchor='middle' font-size='36' fill='%23c9a45c'%3E祈%3C/text%3E%3C/svg%3E" />
+</head>
+<body>
+  <a class="skip-link" href="#history">跳至建筑介绍</a>
+  <header class="header">
+    <a class="brand" href="#home" aria-label="祈年殿 首页"><span class="seal" aria-hidden="true">祈</span><span>祈年殿<small>建筑数字档案</small></span></a>
+    <button class="menu-toggle" aria-label="打开章节导航" aria-expanded="false" aria-controls="navigation"><span></span><span></span></button>
+    <nav id="navigation" aria-label="章节导航">
+      <a href="#history">建筑历史</a><a href="#structure">结构解析</a><a href="#details">细节之美</a><a href="#culture">文化价值</a><a href="#explore" class="nav-explore">探索 <span aria-hidden="true">↗</span></a>
+    </nav>
+  </header>
+
+  <div class="atmosphere" aria-hidden="true"><div class="environment dawn"></div><div class="environment dusk"></div><div class="sunbeam"></div><div class="horizon"></div><div class="atmosphere-shade"></div></div>
+  <div id="stage" role="img" aria-label="可随滚动旋转、分层及放大的祈年殿三维模型"></div>
+  <div class="model-status" role="status" aria-live="polite"><span class="loading-ring"></span><span id="load-label">正在唤醒建筑档案</span><span id="load-percent">0%</span><div class="load-track"><i></i></div></div>
+  <aside class="model-error" hidden aria-label="三维模型加载状态"><img src="/assets/model-poster.webp" alt="祈年殿已有模型的静态预览" /><div><p>三维展厅暂未连接</p><span>你仍可阅读所有章节，或重新加载模型。</span><button class="glass small" id="retry-model">重新加载 <span>↻</span></button><small>当前为静态备用预览</small></div></aside>
+
+  <main id="story">
+    <section class="chapter" id="home" data-chapter="0" aria-labelledby="title-home">
+      <div class="panel"><div class="copy hero-copy">
+        <p class="eyebrow">DIGITAL HERITAGE <span>·</span> BEIJING</p>
+        <h1 id="title-home">祈年殿</h1>
+        <p class="hero-subtitle">中国古代建筑智慧的<br class="mobile-br" />数字化探索</p>
+        <a href="#history" class="glass primary">开始探索 <span aria-hidden="true">⟶</span></a>
+      </div><p class="visual-caption"><span>01 — QINIAN DIAN</span>蓝瓦映天，天地有序。</p></div>
+    </section>
+
+    <section class="chapter" id="history" data-chapter="1" aria-labelledby="title-history">
+      <div class="panel"><div class="copy">
+        <p class="eyebrow">01 / ARCHITECTURE</p>
+        <h2 id="title-history">一座殿宇，<br />承载东方智慧</h2>
+        <p class="description">祈年殿坐落于北京天坛。三重檐圆形殿宇与汉白玉台基，呈现中国古代礼制建筑的秩序与美。</p>
+        <div class="history-facts"><div><strong>38<span>米</span></strong><p>坛殿通高 · 约</p></div><div><strong>24<span>米</span></strong><p>外檐柱间直径 · 约</p></div></div>
+      </div><div class="history-bottom"><div class="timeline-mini"><span><i></i><b>明代</b> 始建</span><span><i></i><b>清代</b> 重建与修缮</span></div><div class="tags"><span>三重檐攒尖顶</span><span>蓝色琉璃瓦</span><span>汉白玉台基</span></div></div></div>
+    </section>
+
+    <section class="chapter" id="structure" data-chapter="2" aria-labelledby="title-structure">
+      <div class="panel"><div class="copy">
+        <p class="eyebrow">02 / STRUCTURE</p>
+        <h2 id="title-structure">秩序之中，<br />见建筑智慧</h2>
+        <p class="description">从屋顶到台基，读懂祈年殿的结构层次。</p>
+        <div class="structure-list"><div><em>01</em><span><b>屋顶结构</b><small>三重檐攒尖顶</small></span><span class="mini-arrow">↗</span></div><div><em>02</em><span><b>柱梁关系</b><small>木构承托与层层出檐</small></span><span class="mini-arrow">↗</span></div><div><em>03</em><span><b>台基结构</b><small>汉白玉台基与石栏</small></span><span class="mini-arrow">↗</span></div></div>
+      </div><div class="model-switch" role="group" aria-label="建筑结构展示"><button id="assemble" aria-pressed="false">整体</button><button id="explode" class="selected" aria-pressed="true">分层</button><span></span><button id="rotate-structure" aria-pressed="false" aria-label="旋转查看建筑">↻ <span>旋转查看</span></button></div><p class="structure-note">外观分层展示</p></div>
+    </section>
+
+    <section class="chapter" id="details" data-chapter="3" aria-labelledby="title-details">
+      <div class="panel"><div class="detail-heading"><p class="eyebrow">03 / DETAILS</p><h2 id="title-details">方寸之间，<br class="mobile-br" />尽见匠心</h2><p class="description">在琉璃、彩绘、木构与石雕之间，发现建筑之美。</p></div>
+        <div class="detail-select" role="group" aria-label="建筑细节视角">
+          <button data-detail="0" aria-pressed="true" class="active"><span class="material-chip blue"></span><span><em>01</em><b>琉璃瓦</b><small>蓝色釉面，映照天光</small></span><i>↗</i></button>
+          <button data-detail="1" aria-pressed="false"><span class="material-chip painted"></span><span><em>02</em><b>彩绘</b><small>梁枋之间的色彩秩序</small></span><i>↗</i></button>
+          <button data-detail="2" aria-pressed="false"><span class="material-chip timber"></span><span><em>03</em><b>木结构</b><small>承托屋檐的营造智慧</small></span><i>↗</i></button>
+          <button data-detail="3" aria-pressed="false"><span class="material-chip marble"></span><span><em>04</em><b>石雕</b><small>汉白玉上的细腻纹理</small></span><i>↗</i></button>
+        </div><div class="detail-controls"><button class="glass small" id="detail-zoom" aria-pressed="false">＋ 放大查看</button><span id="detail-label">01 / 琉璃瓦</span></div>
+      </div>
+    </section>
+
+    <section class="chapter" id="culture" data-chapter="4" aria-labelledby="title-culture">
+      <div class="panel"><div class="culture-heading"><p class="eyebrow">04 / CULTURE</p><h2 id="title-culture">天地之间，文明回响</h2><p class="description">以建筑凝结礼制，以匠心连接古今。</p></div>
+      <div class="culture-key left"><div><span class="symbol">礼</span><p><b>礼制</b><small>敬天祈谷的文化记忆</small></p></div><div><span class="symbol">工</span><p><b>营造</b><small>木构与石作的协同</small></p></div></div>
+      <div class="culture-key right"><div><span class="symbol">圆</span><p><b>秩序</b><small>圆形殿宇的空间表达</small></p></div><div><span class="symbol">承</span><p><b>传承</b><small>让文化遗产被看见</small></p></div></div>
+      <div class="culture-timeline"><div><i></i><b>历史营造</b><span>木石之间的建筑智慧</span></div><div><i></i><b>文化延续</b><span>古今相连的文化记忆</span></div><div><i></i><b>数字探索</b><span>多维呈现的建筑档案</span></div></div></div>
+    </section>
+
+    <section class="chapter" id="explore" data-chapter="5" aria-labelledby="title-explore">
+      <div class="panel"><div class="copy end-copy"><p class="eyebrow">05 / EXPLORE</p><h2 id="title-explore">让古老智慧，<br />在此刻被看见</h2><p class="description">从一座祈年殿，走近中国古代建筑。<br />让探索继续，让文化相连。</p><button id="explore-model" class="glass primary" aria-pressed="false">探索更多 <span aria-hidden="true">⟶</span></button><a href="#home" class="text-link">返回顶部 ↑</a></div>
+      <footer><a href="#home" class="footer-brand">祈年殿 <span>建筑数字档案</span></a><div><a href="#history">建筑历史</a><a href="#structure">结构解析</a><a href="#details">细节之美</a></div><p><span>BEIJING · CHINA</span><small>文化遗产 · 数字探索</small></p><div class="footer-links"><a href="https://www.aigcdavid.cn/" target="_blank" rel="noopener noreferrer" class="personal-link">AIGC David <span>个人网站 ↗</span></a><a href="https://tiantanpark.cn/scenic_spot_list/detail/1254.html" target="_blank" rel="noopener noreferrer" class="source-link">建筑资料 ↗</a></div></footer></div>
+    </section>
+  </main>
+
+  <div class="explore-controls" hidden><span>拖动旋转 · 滚动继续阅读</span><button class="glass small" id="reset-view">重置视角</button><button class="close-explore" aria-label="退出自由探索">×</button></div>
+  <div class="page-hud"><a class="scroll-cue" href="#history" aria-label="前往下一章节"><span>↓</span><small>SCROLL TO DISCOVER</small></a><div class="chapter-progress"><div class="progress-track"><i></i></div><span id="chapter-number">01</span><span class="progress-total">/ 06</span></div></div>
+  <noscript><p class="noscript">请启用 JavaScript 以体验三维模型。建筑介绍仍可向下阅读。</p></noscript>
+  <script type="module" src="/src/main.js"></script>
+</body>
+</html>

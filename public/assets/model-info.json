@@ -1,0 +1,28 @@
+{
+  "desktop": {
+    "bytes": 12825252,
+    "nodes": 113,
+    "meshes": 79,
+    "triangles": 894634,
+    "textures": 17,
+    "roots": [
+      "Terraces_Root",
+      "Timber_Root",
+      "Roofs_Root"
+    ],
+    "hierarchyPreserved": true
+  },
+  "mobile": {
+    "bytes": 8203288,
+    "nodes": 113,
+    "meshes": 79,
+    "triangles": 482436,
+    "textures": 17,
+    "roots": [
+      "Terraces_Root",
+      "Timber_Root",
+      "Roofs_Root"
+    ],
+    "hierarchyPreserved": true
+  }
+}

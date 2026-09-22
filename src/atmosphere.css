@@ -1,0 +1,22 @@
+.atmosphere{z-index:0!important;background:#10151e!important;overflow:hidden;pointer-events:none}
+.environment,.sunbeam,.horizon,.atmosphere-shade{position:absolute;inset:0}
+.environment{background-position:center;background-size:cover;transform:scale(1.015);filter:saturate(.8);}
+.environment.dawn{background-image:url('/assets/atmosphere-dawn.webp');opacity:calc(1 - var(--dusk,0))}
+.environment.dusk{background-image:url('/assets/atmosphere-dusk.webp');opacity:var(--dusk,0)}
+.atmosphere-shade{background:linear-gradient(90deg,rgba(6,10,17,.70),rgba(8,12,19,.28) 37%,transparent 70%),linear-gradient(0deg,#080c14c9,transparent 28%,transparent 75%,#080d1426)}
+.sunbeam{background:linear-gradient(118deg,transparent 12%,#ffe0a514 24%,transparent 36%);mix-blend-mode:screen;opacity:calc(.7 - var(--dusk,0)*.5)}
+.horizon{background:radial-gradient(ellipse at 65% 66%,#dbb47317,transparent 47%)}
+.header{background:linear-gradient(180deg,#080c14b0,#0b101942)!important;backdrop-filter:blur(14px);border-bottom-color:#e6c89422}
+h1,h2{text-shadow:0 3px 35px #0008}.description,.hero-subtitle{text-shadow:0 2px 12px #000b}
+.primary{background:linear-gradient(120deg,#dfc48c22,#a9906010);box-shadow:inset 0 1px 0 #ffe9b61f,0 10px 40px #0002;backdrop-filter:blur(16px)}
+.structure-list>div,.detail-select button{background:linear-gradient(115deg,#17212cd6,#141920b8);backdrop-filter:blur(18px);box-shadow:0 8px 30px #0002}
+.detail-select button.active{background:linear-gradient(115deg,#66533480,#18202acc)}
+footer{background:linear-gradient(180deg,#10141bbb,#090e16ed);backdrop-filter:blur(16px)}
+footer .footer-links{display:flex;gap:25px;align-items:center}.personal-link{font-size:13px;color:#e5c68f;letter-spacing:.03em}.personal-link span{font-size:10px;margin-left:8px;color:#c3bba9}.personal-link:hover{color:white}.personal-link:focus-visible{outline:1px solid #c9a45c;outline-offset:6px}
+@media(max-width:760px){
+.environment.dawn{background-image:url('/assets/atmosphere-dawn-mobile.webp');background-position:43% center}.environment.dusk{background-image:url('/assets/atmosphere-dusk-mobile.webp');background-position:40% center}
+.atmosphere-shade{background:linear-gradient(180deg,#090f186e,transparent 45%,#090f18b0 83%,#090f18df),linear-gradient(90deg,#0a10194d,transparent)}
+#stage{mask-image:linear-gradient(180deg,transparent,black 10%,black 83%,transparent)}
+footer{min-height:110px;padding:13px 25px;gap:8px}footer .footer-links{display:flex;width:100%;gap:20px;order:3}.personal-link{font-size:11px}.personal-link span{font-size:9px}footer .source-link{margin-left:auto;font-size:9px}footer>p{margin-left:auto}.footer-brand span{font-size:8px}
+body[data-chapter="5"] .page-hud{bottom:135px}.end-copy .primary{bottom:178px}.end-copy .text-link{bottom:189px}.explore-controls{bottom:129px}
+}

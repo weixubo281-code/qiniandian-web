@@ -1,0 +1,73 @@
+{
+  "project": "祈年殿 · 建筑数字档案",
+  "sourceBlend": "../祈年殿Blender场景/Qiniandian_Editable.blend",
+  "sourceMaterialLibrary": "../祈年殿Blender场景/Qiniandian_Materials.blend",
+  "designScreens": [
+    "../祈年殿官网视觉稿/SCREEN-01.png",
+    "../祈年殿官网视觉稿/SCREEN-02.png",
+    "../祈年殿官网视觉稿/SCREEN-03.png",
+    "../祈年殿官网视觉稿/SCREEN-04.png",
+    "../祈年殿官网视觉稿/SCREEN-05.png",
+    "../祈年殿官网视觉稿/SCREEN-06.png"
+  ],
+  "webModels": {
+    "desktop": "public/assets/qiniandian-desktop.glb",
+    "mobile": "public/assets/qiniandian-mobile.glb"
+  },
+  "components": {
+    "terraces": "Terraces_Root",
+    "timber": "Timber_Root",
+    "roofs": "Roofs_Root"
+  },
+  "axes": {
+    "blender": "Z-up",
+    "gltf": "Y-up",
+    "unit": "meters"
+  },
+  "materials": "Blender-baked tiled base-color and tangent-normal maps; embedded WebP textures; metallic/roughness factors retained.",
+  "transforms": "Source object transforms stored in glTF extras. Named hierarchy preserved. Original .blend unchanged.",
+  "metrics": {
+    "desktop": {
+      "bytes": 12825252,
+      "nodes": 113,
+      "meshes": 79,
+      "triangles": 894634,
+      "textures": 17,
+      "roots": [
+        "Terraces_Root",
+        "Timber_Root",
+        "Roofs_Root"
+      ],
+      "hierarchyPreserved": true
+    },
+    "mobile": {
+      "bytes": 8203288,
+      "nodes": 113,
+      "meshes": 79,
+      "triangles": 482436,
+      "textures": 17,
+      "roots": [
+        "Terraces_Root",
+        "Timber_Root",
+        "Roofs_Root"
+      ],
+      "hierarchyPreserved": true
+    }
+  },
+  "limitations": "Existing artistic exterior reconstruction; not a measured restoration. Original ornament simplifications retained.",
+  "sourceBlendSHA256": "2A6D4CB01E9523661C5793B7B60E91D8C59A6E1ED58B83381164A4F941C4DA68",
+  "atmosphere": {
+    "dawn": "public/assets/atmosphere-dawn.webp",
+    "dusk": "public/assets/atmosphere-dusk.webp",
+    "mobile": [
+      "public/assets/atmosphere-dawn-mobile.webp",
+      "public/assets/atmosphere-dusk-mobile.webp"
+    ],
+    "provenance": "AI-generated environment-only backplates referenced to SCREEN-01 and SCREEN-06; architecture remains the existing interactive GLB",
+    "courtyard": {
+      "diffuse": "public/assets/courtyard-diffuse.webp",
+      "normal": "public/assets/courtyard-normal.webp",
+      "source": "PBR_Courtyard_Paving baked from original Qiniandian_Editable.blend"
+    }
+  }
+}
