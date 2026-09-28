@@ -14,7 +14,7 @@
     button:focus-visible { outline:3px solid var(--yellow); outline-offset:2px; }
     .app { height:100dvh; min-height:0; display:flex; flex-direction:column; max-width:760px; margin:auto; }
     .progress { height:5px; flex:none; background:#343434; }
-    .progress span { display:block; height:100%; width:4.76%; background:var(--yellow); transition:width .22s ease; }
+    .progress span { display:block; height:100%; width:4.55%; background:var(--yellow); transition:width .22s ease; }
     .topbar { display:flex; align-items:center; justify-content:space-between; gap:12px; padding:17px 20px 11px; flex:none; }
     .brand { font-size:12px; line-height:1.25; letter-spacing:.08em; color:var(--muted); font-weight:700; }
     .tools { display:flex; gap:5px; align-items:center; }
@@ -308,13 +308,23 @@
     "section": "总结与交流",
     "title": "AI 可以加快探索，设计师负责判断",
     "lines": [
-      "今天从一张白噪音唤醒灯效果图出发，看了概念视觉怎样延展成多角度图、短视频和官网。AI 可以加快探索，具体方向和后续验证仍需要设计师自己判断。",
-      "我会把今天提到的提示词，以及我整理的 AI Agent、Skill 和设计工作流资料放进“大魏老师·AI设计实践群”。想拿资料、以后继续交流的同学，可以扫屏幕上的微信二维码进群。",
-      "我后面也计划做面向设计专业同学的 AI 进阶课，带大家从一个选题做到能展示的作品。具体内容和时间还在规划。进群后欢迎告诉我，你最想学产品视觉、数字展馆，还是作品网站；我会参考大家的需求安排。谢谢大家，欢迎提问。"
+      "今天从一张白噪音唤醒灯效果图出发，看了概念视觉怎样延展成多角度图、短视频和官网。AI 能加快探索，选择方向和后续验证仍需要设计师自己判断。",
+      "谢谢大家。我们先留一点时间交流，再看最后一页的讲座资料群二维码。"
     ],
-    "interaction": "先举手做一个快速选择：想深入学“产品视觉 / 数字展馆 / 作品网站”的分别举手，观察人数即可。随后切到微信群二维码，保持屏幕显示，留时间让有兴趣的同学自愿扫码；最后收一两个问题。",
-    "cue": "建议 5 分钟：总结约 40 秒，资料与进阶课约 60 秒，扫码约 60 秒，其余时间答疑。二维码需课前备好并在投影上试扫。不要说进阶课已经由学院确定，也不要承诺尚未整理好的资料会在某个具体时间发出。",
-    "time": "建议 5 分钟（含互动）"
+    "interaction": "先收一两个问题。若暂时没人提问，就回到第 2 页：“现在再看这张灯图，你觉得它还缺哪一步？”",
+    "cue": "建议 3 分钟。若时间紧张，可只收一个问题，然后翻到二维码页，让同学课后在群内继续提问。",
+    "time": "建议 3 分钟（含互动）"
+  },
+  {
+    "section": "课后资料 / 入群交流",
+    "title": "扫码进群，领取讲座资料",
+    "lines": [
+      "我会把今天提到的提示词，以及整理好的 AI Agent、Skill 和设计工作流资料，放在“大魏老师·AI工业设计实践群”里。有兴趣的同学可以扫屏幕上的微信二维码，自愿进群领取和交流。",
+      "我后面计划做面向设计专业同学的 AI 进阶课，从一个选题做到能展示的作品。想深入学产品视觉、数字展馆或作品网站，欢迎进群告诉我；具体内容和时间会参考大家的兴趣再安排。"
+    ],
+    "interaction": "二维码保持投屏约一分钟。请大家快速举手：更想学产品视觉、数字展馆、还是作品网站？看人数即可，不在现场做报名。",
+    "cue": "建议 2 分钟。二维码图片上的实际群名是“大魏老师·AI工业设计实践群”，截图显示有效期至 10 月 5 日；日后复用 PPT 要换码。",
+    "time": "建议 2 分钟（含互动）"
   }
 ];
 
@@ -328,7 +338,7 @@
 
   function render() {
     const p = pages[index];
-    $('section').textContent = String(index + 1).padStart(2,'0') + ' / 21   ' + p.section;
+    $('section').textContent = String(index + 1).padStart(2,'0') + ' / ' + pages.length + '   ' + p.section;
     $('title').textContent = p.title;
     $('time').textContent = p.time;
     $('script').replaceChildren(...p.lines.map(line => { const el=document.createElement('p'); el.textContent=line; return el; }));
@@ -343,7 +353,7 @@
     $('prev').disabled = index === 0;
     $('next').disabled = index === pages.length - 1;
     $('content').scrollTop = 0;
-    document.title = (index+1) + '/21 · ' + p.title + '｜手机讲稿';
+    document.title = (index+1) + '/' + pages.length + ' · ' + p.title + '｜手机讲稿';
     try { history.replaceState(null,'','#p'+(index+1)); } catch (_) {}
     [...$('toc').children].forEach((node,i) => node.classList.toggle('active',i===index));
   }
