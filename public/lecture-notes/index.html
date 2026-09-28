@@ -1,0 +1,214 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#171717">
+  <title>从创意到作品｜21页手机讲稿</title>
+  <style>
+    :root { color-scheme: dark; --bg:#171717; --fg:#f7f7f3; --muted:#a4a4a0; --line:#424242; --yellow:#ffeb00; --body-size:26px; }
+    * { box-sizing:border-box; }
+    html,body { width:100%; height:100%; margin:0; }
+    body { font-family: -apple-system, BlinkMacSystemFont, "PingFang SC", "Microsoft YaHei", "Noto Sans CJK SC", sans-serif; background:var(--bg); color:var(--fg); -webkit-font-smoothing:antialiased; overscroll-behavior:none; }
+    button { font:inherit; color:inherit; cursor:pointer; -webkit-tap-highlight-color:transparent; }
+    button:focus-visible { outline:3px solid var(--yellow); outline-offset:2px; }
+    .app { height:100dvh; min-height:0; display:flex; flex-direction:column; max-width:760px; margin:auto; }
+    .progress { height:5px; flex:none; background:#343434; }
+    .progress span { display:block; height:100%; width:4.76%; background:var(--yellow); transition:width .22s ease; }
+    .topbar { display:flex; align-items:center; justify-content:space-between; gap:12px; padding:17px 20px 11px; flex:none; }
+    .brand { font-size:12px; line-height:1.25; letter-spacing:.08em; color:var(--muted); font-weight:700; }
+    .tools { display:flex; gap:5px; align-items:center; }
+    .tool { min-width:42px; height:40px; border:1px solid var(--line); border-radius:8px; background:transparent; font-size:17px; font-weight:700; }
+    .tool.menu { min-width:56px; font-size:14px; }
+    main { flex:1; min-height:0; overflow-y:auto; overscroll-behavior-y:contain; padding:20px 24px 38px; scrollbar-width:thin; scrollbar-color:#555 transparent; }
+    .eyebrow { color:var(--yellow); font-size:14px; font-weight:800; letter-spacing:.08em; margin-bottom:17px; }
+    h1 { font-size:clamp(28px, 7.6vw, 45px); line-height:1.22; margin:0 0 17px; letter-spacing:-.035em; }
+    .time { display:inline-block; color:var(--muted); font-size:14px; padding-bottom:17px; }
+    .rule { width:38px; height:4px; background:var(--yellow); margin:0 0 29px; }
+    .script { font-size:var(--body-size); font-weight:500; line-height:1.68; letter-spacing:.005em; }
+    .script p { margin:0 0 25px; }
+    .cue { border-top:1px solid var(--line); margin-top:38px; padding-top:19px; font-size:17px; line-height:1.6; color:#c9c9c4; }
+    .cue b { color:var(--yellow); font-size:14px; letter-spacing:.06em; margin-right:8px; }
+    .nav { flex:none; display:grid; grid-template-columns:1fr auto 1fr; gap:9px; align-items:center; padding:10px 16px calc(12px + env(safe-area-inset-bottom)); border-top:1px solid var(--line); background:var(--bg); }
+    .nav button { border:1px solid #555; border-radius:9px; background:#292929; min-height:54px; font-size:18px; font-weight:700; }
+    .nav button.next { background:var(--yellow); color:#101010; border-color:var(--yellow); }
+    .nav button:disabled { opacity:.32; cursor:default; }
+    .counter { white-space:nowrap; min-width:68px; text-align:center; font-variant-numeric:tabular-nums; font-size:16px; color:var(--muted); }
+    .drawer { position:fixed; inset:0; z-index:10; background:rgba(0,0,0,.75); display:none; align-items:flex-end; }
+    .drawer.open { display:flex; }
+    .sheet { background:#232323; width:100%; max-width:760px; margin:0 auto; border-radius:17px 17px 0 0; max-height:79dvh; display:flex; flex-direction:column; padding-bottom:env(safe-area-inset-bottom); }
+    .sheethead { padding:18px 20px 12px; display:flex; align-items:center; justify-content:space-between; border-bottom:1px solid var(--line); font-size:18px; font-weight:700; }
+    .close { border:0; background:transparent; font-size:25px; width:40px; height:35px; }
+    .toc { overflow-y:auto; padding:6px 12px 14px; }
+    .toc button { width:100%; display:flex; gap:13px; align-items:baseline; text-align:left; padding:14px 11px; border:0; border-bottom:1px solid #393939; background:transparent; font-size:17px; line-height:1.35; }
+    .toc button.active { color:var(--yellow); }
+    .toc .num { font-size:13px; font-weight:800; width:25px; flex:none; color:var(--muted); }
+    .toc button.active .num { color:var(--yellow); }
+    @media (min-width:761px) { body{background:#0b0b0b}.app{border-left:1px solid #333;border-right:1px solid #333}.drawer{align-items:center}.sheet{border-radius:16px;max-height:75dvh} }
+    @media (prefers-reduced-motion:reduce) { .progress span{transition:none} }
+  </style>
+</head>
+<body>
+  <div class="app">
+    <div class="progress" aria-hidden="true"><span id="progress"></span></div>
+    <header class="topbar">
+      <div class="brand">从创意到作品<br>AI 如何辅助工业设计</div>
+      <div class="tools">
+        <button class="tool" id="smaller" aria-label="缩小字号">A−</button>
+        <button class="tool" id="larger" aria-label="放大字号">A＋</button>
+        <button class="tool menu" id="menu" aria-label="打开目录">目录</button>
+      </div>
+    </header>
+    <main id="content" aria-live="polite">
+      <div class="eyebrow" id="section"></div>
+      <h1 id="title"></h1>
+      <div class="time" id="time"></div>
+      <div class="rule"></div>
+      <div class="script" id="script"></div>
+      <div class="cue" id="cue"></div>
+    </main>
+    <footer class="nav">
+      <button id="prev" aria-label="上一页">← 上一页</button>
+      <span class="counter" id="counter"></span>
+      <button class="next" id="next" aria-label="下一页">下一页 →</button>
+    </footer>
+  </div>
+  <div class="drawer" id="drawer" role="dialog" aria-modal="true" aria-label="页码目录">
+    <div class="sheet">
+      <div class="sheethead">选择 PPT 页码<button class="close" id="close" aria-label="关闭目录">×</button></div>
+      <div class="toc" id="toc"></div>
+    </div>
+  </div>
+  <script>
+  const pages = [
+    {section:'开场',title:'从创意到作品',time:'约 1 分钟',lines:[
+      '大家好，我是 David。今天想和大家聊聊，AI 能怎样参与工业设计。',
+      '我会用一盏白噪音唤醒灯，带大家从最初的使用场景，一直看到概念图出来之后，还需要检查什么。'
+    ],cue:'开场先看向同学，停一拍，再翻页。'},
+    {section:'开场提问',title:'这盏氛围灯，设计完成了吗？',time:'约 3 分钟',lines:[
+      '先看这张图。第一眼，你们觉得这件产品已经设计完成了吗？觉得完成了的举个手，觉得还差一些的也举个手。',
+      '我想听听两位同学的理由。这个问题先不急着给答案，后面我们会回来再看。'
+    ],cue:'请两位同学回答。这里展示的是概念图，不要说成已经能生产的产品。'},
+    {section:'讲座路线',title:'今天，我们沿着一个产品往前走',time:'约 1 分钟',lines:[
+      '今天就沿着一件产品往前走：先弄清楚要解决什么问题，再用 AI 探索形态，最后检查这些画面能不能支撑一个真实的设计方案。'
+    ],cue:'对应 PPT 上的三步：提出问题、发展概念、检验与表达。'},
+    {section:'关于我',title:'David：企业设计实践',time:'约 1 分钟',lines:[
+      '我之前主要在企业做视觉设计、智能座舱和用户体验相关工作。',
+      '做项目时，效果图只是沟通方案的一部分，后面还要面对使用、交互和落地的问题。这也是我今天想和大家分享的角度。'
+    ],cue:'简短介绍即可。PPT 上的“AI 商业运营 5 年”等具体履历，请投屏前核对。'},
+    {section:'案例 01 / 工业产品',title:'白噪音唤醒灯',time:'约 2 分钟',lines:[
+      '这是今天的主要案例：一盏放在床头的白噪音唤醒灯。',
+      '现在看到的是概念探索，包括形态图、多角度画面和一段短视频。我们先从它要给谁用、在什么地方用开始看。'
+    ],cue:'指向产品图，说明它是概念案例。'},
+    {section:'案例 01 / 场景',title:'如果住在宿舍，谁会被闹钟叫醒？',time:'约 3 分钟',lines:[
+      '假设它放在宿舍床头。早上只有你要起床，室友还在睡。',
+      '这时候闹钟的声音、灯光照向哪里，以及你能不能伸手找到开关，都会影响使用体验。你们觉得还有什么情况是我没考虑到的？'
+    ],cue:'让学生补充一两个真实宿舍场景。说明这是课堂假设，还需要找使用者确认。'},
+    {section:'案例 01 / 设计条件',title:'把场景翻成设计条件',time:'约 3 分钟',lines:[
+      '有了场景，我们才能把问题问具体。渐亮的速度舒不舒服？会不会照到室友？半睡半醒时能不能摸到操作区？放在床头稳不稳？',
+      '这些现在都是要检验的问题。如果让你验证其中一项，你会怎么做？'
+    ],cue:'请一位同学提出验证办法，比如做简单模型，在真实床头试操作。'},
+    {section:'案例 01 / 给 AI 的任务',title:'AI 的输入，需要包含设计约束',time:'约 3 分钟',lines:[
+      '如果只说“设计一盏好看的智能灯”，AI 很容易给我们一张漂亮但用途模糊的图。',
+      '把宿舍床头、温和唤醒、光线方向、操作位置和摆放方式讲清楚，生成的方向才更值得讨论。设计师要先把问题描述好，再看 AI 给出的方案。'
+    ],cue:'对比 PPT 左右两种任务表述，突出“场景”和“限制”。'},
+    {section:'案例 01 / 形态探索',title:'第一轮画面，用来提问',time:'约 2 分钟',lines:[
+      '第一轮图出来，我不会急着选最好看的。我会先问：光到底从哪里出来？手该按哪里？底座能不能支撑住它？',
+      '这张图的价值，是让我们有一个可以一起讨论的具体对象。'
+    ],cue:'指着概念图，让学生找一个他们最想追问的地方。'},
+    {section:'案例 01 / 概念表达',title:'这张图已经说清什么？',time:'约 2 分钟',lines:[
+      '这张图已经把体量、材质感觉和发光氛围表达得比较清楚了。假如我要向别人介绍设计方向，它很有帮助。',
+      '但仅凭这张图，我们还不知道按钮是否好用、灯光是否舒适，或者它内部怎么放下元件。'
+    ],cue:'先肯定画面的表达作用，再把讨论带向待验证的问题。'},
+    {section:'案例 01 / 多视角',title:'多视图是用来查错的',time:'约 3 分钟',lines:[
+      '接下来换几个角度看。同一件产品，正面的开口、侧面的厚度、背面的布局应该能互相对上。',
+      '大家找一找，这些画面有没有让你觉得需要进一步确认的地方？'
+    ],cue:'让学生找一个可能不一致的细节。多视角生成图不能代替尺寸图和工程模型。'},
+    {section:'案例 01 / 时间中的体验',title:'15 秒视频，检查体验是否连贯',time:'约 2 分钟',lines:[
+      '静态图能看形态，视频可以让我们看一段使用过程。播放时请留意两件事：光是怎么亮起来的，人又是怎么操作它的。',
+      '看完之后，你们觉得哪个动作或光效变化还需要调整？'
+    ],cue:'视频没有嵌入 PPT，课前单独准备文件并试播。若无法播放，就用这一页的静帧讨论体验过程。'},
+    {section:'案例 01 / 现实验证',title:'画面完成之后，设计还要往前走',time:'约 2 分钟',lines:[
+      '现在回到开头的问题：有了这些图，设计完成了吗？我觉得还需要往前走一步。',
+      '比如做一个简单模型，确认床头摆放、操作位置和大小；再找人实际试用。产品的体验要通过真实接触来验证。'
+    ],cue:'回应第 2 页的举手问题。'},
+    {section:'现场点评',title:'如果由你来改，先动哪个地方？',time:'约 4 分钟',lines:[
+      '如果这盏灯交给你继续改，你会先改哪里？也请说说为什么，以及你打算怎么验证。',
+      '如果只是觉得外观还可以变得更好看，我们可以再往前问一句：这个改变解决了谁在什么场景下的问题？'
+    ],cue:'请两位同学回答，每人约 30 到 45 秒；必要时追问原因和验证方法。'},
+    {section:'方法迁移',title:'同样的方法，还能走到哪里？',time:'约 1 分钟',lines:[
+      '刚才我们从场景出发，用画面讨论，再寻找验证的方法。',
+      '这个思路也能用在空间展示、服装概念和个人作品呈现上。接下来快速看几个不同方向的案例。'
+    ],cue:'这一页只做转场，不需要逐个展开小图。'},
+    {section:'案例 02 / 数字展馆',title:'祈年殿数字展馆',time:'约 3 分钟',lines:[
+      '做数字展馆时，我先考虑观众进入页面会看到什么，以及下一步为什么愿意继续看。',
+      '比如首页先建立主题和氛围，导航再提示后续内容。我们打开页面，看看从第一屏往下浏览时，内容是怎么接上的。'
+    ],cue:'现场打开祈年殿网页，演示一次首页向下浏览。重点讲内容顺序和浏览体验。'},
+    {section:'案例 03 / 数字展馆',title:'自然博物馆：让建筑带出浏览路线',time:'约 2 分钟',lines:[
+      '这一组页面先让观众看到建筑整体，再进入结构和内容。',
+      '你们可以注意，第一屏和下一屏给的信息不同。如果一开始把所有内容都堆出来，观众反而不知道先看哪里。'
+    ],cue:'指向 PPT 中的两张网页图，展示“先整体，再局部”的顺序。'},
+    {section:'案例 04 / 跨专业概念',title:'甲壳虫主题服装',time:'约 2 分钟',lines:[
+      '这个案例从甲壳虫的形态、纹理和颜色出发，再尝试转成服装的廓形和细节。',
+      'AI 能帮助我们很快看到不同的表达方向。真要做成衣服，还得回到面料、版型和穿着感受。'
+    ],cue:'指明哪部分来自甲壳结构，哪部分借鉴了斑纹和配色。'},
+    {section:'案例 05 / 作品表达',title:'作品站：让过程也能被看到',time:'约 2 分钟',lines:[
+      '作品展示也是设计的一部分。页面可以先吸引别人看下去，但更值得放进去的是：当时遇到了什么问题，试过哪些方向，最后为什么选这个方案。',
+      '以后做作品集，让别人看见你的判断过程会很重要。'
+    ],cue:'指向网页主视觉，说明页面之外还要讲清项目过程与自己的贡献。'},
+    {section:'三分钟练习',title:'选一件宿舍物品，改进使用体验',time:'约 4 分钟',lines:[
+      '现在选一件宿舍里常用的物品。先想谁在什么情况下用它，再说一个具体的不方便，最后提出一个能试出来的改进办法。',
+      '我们先用两分钟自己想一想，之后请一两位同学说说。'
+    ],cue:'遇到“加一个 AI 功能”之类的回答，追问具体动作和验证标准。'},
+    {section:'总结与交流',title:'AI 可以加快探索，设计师负责判断',time:'约 1 分钟，随后答疑',lines:[
+      '今天从一张唤醒灯效果图出发，看了它背后的场景、形态探索和后续验证。',
+      'AI 能让我们更快看到方案，但最后仍需要我们去观察人、做选择、动手检验。谢谢大家，有什么想问的可以直接聊。'
+    ],cue:'若暂时没人提问，可问：如果只能做一个唤醒灯样机，你先验证哪个问题？'}
+  ];
+
+  const $ = id => document.getElementById(id);
+  let index = 0;
+  let storedSize = 26;
+  try { storedSize = Number(localStorage.getItem('lecture-font-size')) || 26; } catch (_) {}
+  let size = storedSize;
+  size = Math.max(20, Math.min(36, size));
+  document.documentElement.style.setProperty('--body-size', size + 'px');
+
+  function render() {
+    const p = pages[index];
+    $('section').textContent = String(index + 1).padStart(2,'0') + ' / 21   ' + p.section;
+    $('title').textContent = p.title;
+    $('time').textContent = p.time;
+    $('script').replaceChildren(...p.lines.map(line => { const el=document.createElement('p'); el.textContent=line; return el; }));
+    $('cue').replaceChildren();
+    const lead=document.createElement('b'); lead.textContent='现场提示';
+    $('cue').append(lead, document.createTextNode(p.cue));
+    $('counter').textContent = (index + 1) + ' / ' + pages.length;
+    $('progress').style.width = ((index + 1) / pages.length * 100) + '%';
+    $('prev').disabled = index === 0;
+    $('next').disabled = index === pages.length - 1;
+    $('content').scrollTop = 0;
+    document.title = (index+1) + '/21 · ' + p.title + '｜手机讲稿';
+    try { history.replaceState(null,'','#p'+(index+1)); } catch (_) {}
+    [...$('toc').children].forEach((node,i) => node.classList.toggle('active',i===index));
+  }
+  function go(n) { const to=Math.max(0,Math.min(pages.length-1,n)); if(to!==index){index=to;render();} }
+  $('prev').addEventListener('click',()=>go(index-1));
+  $('next').addEventListener('click',()=>go(index+1));
+  $('smaller').addEventListener('click',()=>{size=Math.max(20,size-2);document.documentElement.style.setProperty('--body-size',size+'px');try{localStorage.setItem('lecture-font-size',size)}catch(_){}});
+  $('larger').addEventListener('click',()=>{size=Math.min(36,size+2);document.documentElement.style.setProperty('--body-size',size+'px');try{localStorage.setItem('lecture-font-size',size)}catch(_){}});
+  function closeMenu() { $('drawer').classList.remove('open'); }
+  $('menu').addEventListener('click',()=>{$('drawer').classList.add('open');$('toc').children[index]?.scrollIntoView({block:'center'});});
+  $('close').addEventListener('click',closeMenu);
+  $('drawer').addEventListener('click',e=>{if(e.target===$('drawer'))closeMenu();});
+  pages.forEach((p,i)=>{const b=document.createElement('button');const n=document.createElement('span');n.className='num';n.textContent=String(i+1).padStart(2,'0');b.append(n,document.createTextNode(p.title));b.addEventListener('click',()=>{go(i);closeMenu();});$('toc').append(b);});
+  document.addEventListener('keydown',e=>{if(e.key==='Escape')closeMenu();if($('drawer').classList.contains('open'))return;if(e.key==='ArrowRight'||e.key==='PageDown'){e.preventDefault();go(index+1)}if(e.key==='ArrowLeft'||e.key==='PageUp'){e.preventDefault();go(index-1)}});
+  let sx=0,sy=0;
+  $('content').addEventListener('touchstart',e=>{sx=e.changedTouches[0].screenX;sy=e.changedTouches[0].screenY;},{passive:true});
+  $('content').addEventListener('touchend',e=>{const dx=e.changedTouches[0].screenX-sx,dy=e.changedTouches[0].screenY-sy;if(Math.abs(dx)>65&&Math.abs(dx)>Math.abs(dy)*1.3)go(index+(dx<0?1:-1));},{passive:true});
+  const start = Number(location.hash.replace('#p',''));
+  if(Number.isInteger(start)&&start>=1&&start<=pages.length)index=start-1;
+  render();
+  </script>
+</body>
+</html>
